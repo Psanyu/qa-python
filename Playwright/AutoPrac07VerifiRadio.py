@@ -27,11 +27,31 @@ def test_V1Verifi(page: Page):
     cbutton = page.locator("//input[@type='checkbox' and (@value='sunday' or @value='tuesday' or @value='thursday')]")
 
     for i in range(cbutton.count()):
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(3000)
         cb = cbutton.nth(i)
         if (cb.is_checked()==False):
            cb.click()
            expect(cb).to_be_checked()
+
+    # checkbox button2
+    odddays = ['Monday','Wednesday','Friday']
+
+    for day in odddays:
+        chkbx = page.get_by_label(day)
+        page.wait_for_timeout(3000)
+        if (chkbx.is_checked()==False):
+           chkbx.check()
+           expect(chkbx).to_be_checked()
+
+    # checkbox button3 unselect
+    evendays = ['Sunday','Tuesday', 'Thursday']
+
+    for day2 in evendays:
+       chkbx2 = page.get_by_label(day2)
+       page.wait_for_timeout(3000)
+       if (chkbx2.is_checked()==True):
+          chkbx2.uncheck()
+          expect(chkbx2).not_to_be_checked()
 
 
     page.close()
