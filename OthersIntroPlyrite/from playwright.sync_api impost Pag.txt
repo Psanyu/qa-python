@@ -1,0 +1,17 @@
+from playwright.sync_api impost Page
+
+def test_web_login(page; Page):
+
+ page.goto.("https://example.com/login")
+
+username = "testuser"
+password = "password@123"
+
+page.fill("#username", username)
+
+page.fill("#password", password)
+
+page.click("button[type='submit']")
+
+assert page.locator("text=Dashboard").is_visible()
+
