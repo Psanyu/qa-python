@@ -1,4 +1,0 @@
-email	password	validity
-admin.test@hmail.com	Admin@123	valid
-invaliduser@example.com	test321	invalid
-validuser@example.com	testxyz	invalid
